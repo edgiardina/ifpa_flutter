@@ -5,6 +5,8 @@ import 'player_details_view.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
+import '../app_settings.dart';
+import '../helpers/math.dart';
 
 /// Displays a list of SampleItems.
 class RankingListView extends StatefulWidget {
@@ -24,36 +26,17 @@ class _RankingListViewState extends State<RankingListView> {
   }
 
   Future<void> loadData() async {
-    final Uri dataURL = Uri.parse(
-      'https://api.ifpapinball.com/v2/rankings/wppr?api_key=',
+    final Uri dataURL = Uri(
+      scheme: 'https',
+      host: 'api.ifpapinball.com',
+      path: 'v2/rankings/wppr',
+      queryParameters: {'api_key': ifpaApiKey},
     );
     final http.Response response = await http.get(dataURL);
     setState(() {
       var jsonObj = jsonDecode(response.body);
       data = jsonObj["rankings"];
     });
-  }
-
-  String ordinal(int number) {
-    if (!(number >= 1 && number <= 100)) {
-      //here you change the range
-      throw Exception('Invalid number');
-    }
-
-    if (number >= 11 && number <= 13) {
-      return 'th';
-    }
-
-    switch (number % 10) {
-      case 1:
-        return 'st';
-      case 2:
-        return 'nd';
-      case 3:
-        return 'rd';
-      default:
-        return 'th';
-    }
   }
 
   @override
