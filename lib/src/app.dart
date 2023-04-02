@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
                     return const PlayerDetailsView();
                   case RankingListView.routeName:
                   default:
-                    return RankingListView();
+                    return const RankingListView();
                 }
               },
             );

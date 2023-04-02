@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ifpa_flutter/src/rankings/player.dart';
 
 import '../settings/settings_view.dart';
 import 'player_details_view.dart';
@@ -11,6 +12,8 @@ import '../helpers/math.dart';
 /// Displays a list of SampleItems.
 class RankingListView extends StatefulWidget {
   static const routeName = '/';
+
+  const RankingListView({super.key});
 
   @override
   _RankingListViewState createState() => _RankingListViewState();
@@ -88,8 +91,8 @@ class _RankingListViewState extends State<RankingListView> {
                 // Navigate to the details page. If the user leaves and returns to
                 // the app after it has been killed while running in the
                 // background, the navigation stack is restored.
-                Navigator.restorablePushNamed(
-                    context, PlayerDetailsView.routeName);
+                Navigator.pushNamed(context, PlayerDetailsView.routeName,
+                    arguments: Player(playerId: int.parse(item["player_id"])));
               });
         },
       ),
