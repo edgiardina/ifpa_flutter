@@ -106,9 +106,7 @@ class _RankingListViewState extends State<RankingListView> {
                 // the app after it has been killed while running in the
                 // background, the navigation stack is restored.
                 Navigator.restorablePushNamed(
-                  context,
-                  PlayerDetailsView.routeName,
-                );
+                    context, PlayerDetailsView.routeName);
               });
         },
       ),

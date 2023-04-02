@@ -1,6 +1,6 @@
 # ifpa_flutter
 
-A new Flutter project.
+I'm learning Flutter. Pinball Data seems to be all I build my toy apps with these days!
 
 ## Getting Started
 
