@@ -16,7 +16,7 @@ class PlayerDetailsView extends StatefulWidget {
 }
 
 class _PlayerDetailsViewState extends State<PlayerDetailsView> {
-  dynamic data;
+  dynamic data = {};
   String appBarTitleText = "";
   String playerImage = "";
 
@@ -42,16 +42,42 @@ class _PlayerDetailsViewState extends State<PlayerDetailsView> {
     Player player = ModalRoute.of(context)!.settings.arguments as Player;
     loadData(player.playerId);
     return Scaffold(
-        appBar: AppBar(
-          title: Text(appBarTitleText),
-        ),
-        body: Column(
-          children: [
-            CircleAvatar(
-              // Display the Flutter Logo image asset.
-              foregroundImage: NetworkImage(playerImage),
-            )
-          ],
-        ));
+      appBar: AppBar(
+        title: Text(appBarTitleText),
+      ),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              CircleAvatar(
+                // Display the Flutter Logo image asset.
+                foregroundImage: NetworkImage(playerImage),
+              ),
+              Text(appBarTitleText),
+              Text(data["player_id"])
+            ],
+          ),
+          ButtonBar(
+            mainAxisSize: MainAxisSize
+                .min, // this will take space as minimum as posible(to center)
+            children: <Widget>[
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Tournament Results'),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Player Vs Player'),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Championship Series'),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
